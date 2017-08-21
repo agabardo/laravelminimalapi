@@ -12,6 +12,11 @@
 */
 
 Route::get('/', function () {
-    
     return view('welcome');
+});
+
+Route::resource('tarefas', 'TarefasController');
+
+Route::group(array('prefix' => 'api','middleware' => 'auth:api'), function() {
+    Route::resource('tarefas', 'TarefasController');
 });
